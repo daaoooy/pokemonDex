@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { usePokemon } from "../context/PokemonContext";
 
 const Card = styled.div`
   border: 1px solid rgb(229, 229, 229);
@@ -54,8 +55,11 @@ const PokemonNumber = styled.p`
 
 const PokemonName = styled.h3``;
 
-function PokemonCard({ pokemon, onAdd, isSelected }) {
+function PokemonCard({ pokemon }) {
   const navigate = useNavigate();
+  const { selected, onAdd } = usePokemon();
+
+  const isSelected = selected.some((p) => p.id === pokemon.id);
 
   return (
     <Card $selected={isSelected} onClick={() => navigate(`/dex/${pokemon.id}`)}>

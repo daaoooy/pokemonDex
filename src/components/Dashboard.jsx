@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ballImage from "../images/pokeball.png";
+import { usePokemon } from "../context/PokemonContext";
 
 const DexTitle = styled.p`
   font-size: 35px;
@@ -11,6 +12,24 @@ const DexTitle = styled.p`
   margin-top: 30px;
   padding: 5px;
   background-color: rgb(255, 213, 85);
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    font-size: 28px;
+    margin-top: 24px;
+    padding: 4px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    font-size: 24px;
+    margin-top: 20px;
+    padding: 3px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin-top: 16px;
+    padding: 2px;
+  }
 `;
 
 const DashboardWrapper = styled.div`
@@ -20,6 +39,21 @@ const DashboardWrapper = styled.div`
   border: 1px solid rgb(205, 205, 205);
   border-radius: 8px;
   background-color: rgb(255, 249, 228);
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
 `;
 
 const SelectedGrid = styled.div`
@@ -29,6 +63,30 @@ const SelectedGrid = styled.div`
   margin-top: 10px;
   margin-bottom: 8px;
   padding: 17px;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    padding: 14px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    padding: 12px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    padding: 8px;
+  }
 `;
 
 const SelectedCard = styled.div`
@@ -52,6 +110,18 @@ const SelectedCard = styled.div`
         box-shadow: 4px 4px 12px rgb(217, 217, 217);
       }
   `}
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    padding: 14px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    padding: 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px;
+  }
 `;
 
 const EmptyText = styled.p`
@@ -98,9 +168,11 @@ const PokeballImage = styled.img`
 
 const PokemonName = styled.h3``;
 
-function Dashboard({ selected, onRemove }) {
-  const selectedList = [...selected, ...Array(6 - selected.length).fill(null)];
+function Dashboard() {
   const navigate = useNavigate();
+  const { selected, onRemove } = usePokemon();
+
+  const selectedList = [...selected, ...Array(6 - selected.length).fill(null)];
 
   return (
     <DashboardWrapper>
@@ -110,7 +182,7 @@ function Dashboard({ selected, onRemove }) {
           <SelectedCard
             key={index}
             $isEmpty={!pokemon}
-            onClick={() => navigate(`/dex/${pokemon.id}`)}
+            onClick={() => pokemon && navigate(`/dex/${pokemon.id}`)}
           >
             {pokemon ? (
               <>

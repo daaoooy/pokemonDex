@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MOCK_DATA from "../data/mock";
+import { usePokemon } from "../context/PokemonContext"; // Context import
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -86,10 +87,14 @@ const Button = styled.button`
   }
 `;
 
-function PokemonDetail({ selected, onAdd, onRemove }) {
+function PokemonDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const { selected, onAdd, onRemove } = usePokemon(); // Context로 상태와 함수 가져오기
+
   const pokemon = MOCK_DATA.find((p) => p.id === Number(id));
+  if (!pokemon) return <div>존재하지 않는 포켓몬입니다.</div>;
 
   const isSelected = selected.some((p) => p.id === pokemon.id);
 
