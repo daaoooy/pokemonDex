@@ -8,7 +8,7 @@ const Card = styled.div`
 
   padding: 12px;
 
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 8px rgb(222, 222, 222);
   text-align: center;
 
   background-color: ${({ $selected }) =>
@@ -58,7 +58,6 @@ const PokemonName = styled.h3``;
 function PokemonCard({ pokemon }) {
   const navigate = useNavigate();
   const { selected, onAdd } = usePokemon();
-
   const isSelected = selected.some((p) => p.id === pokemon.id);
 
   return (

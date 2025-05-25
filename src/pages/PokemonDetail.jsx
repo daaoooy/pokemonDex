@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MOCK_DATA from "../data/mock";
-import { usePokemon } from "../context/PokemonContext"; // Context import
+import { usePokemon } from "../context/PokemonContext";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -90,15 +90,11 @@ const Button = styled.button`
 function PokemonDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const { selected, onAdd, onRemove } = usePokemon(); // Context로 상태와 함수 가져오기
-
+  const { selected, onAdd, onRemove } = usePokemon();
   const pokemon = MOCK_DATA.find((p) => p.id === Number(id));
-  if (!pokemon) return <div>존재하지 않는 포켓몬입니다.</div>;
-
   const isSelected = selected.some((p) => p.id === pokemon.id);
 
-  const handleClick = () => {
+  const clickHandler = () => {
     if (isSelected) {
       onRemove(pokemon.id);
     } else {
@@ -118,8 +114,8 @@ function PokemonDetail() {
         ))}
       </TypesWrapper>
       <PokemonDescription>{pokemon.description}</PokemonDescription>
-      <Button onClick={handleClick}>{isSelected ? "삭제" : "추가"}</Button>
-      <Button onClick={() => navigate(-1)}>뒤로가기</Button>
+      <Button onClick={clickHandler}>{isSelected ? "삭제" : "추가"}</Button>
+      <Button onClick={() => navigate(-1)}>뒤로 가기</Button>
     </Wrapper>
   );
 }

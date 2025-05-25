@@ -1,16 +1,15 @@
 import React from "react";
 import Router from "./routes/Router";
 import GlobalStyle from "./styles/GlobalStyle";
-import { ToastContainer } from "react-toastify";
+import { Toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import { PokemonProvider } from "./context/PokemonContext"; // Context import
+import { PokemonProvider } from "./context/PokemonContext";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <ToastContainer
+      <Toast
         position="top-center"
         autoClose={1000}
         hideProgressBar={false}
