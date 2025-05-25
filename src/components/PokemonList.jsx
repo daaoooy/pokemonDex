@@ -10,7 +10,7 @@ const Grid = styled.div`
   padding: 22px;
   margin-top: 10px;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid rgb(219, 219, 219);
   border-radius: 8px;
   width: 100%;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);

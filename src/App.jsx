@@ -4,19 +4,6 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-<ToastContainer
-  position="top-center"
-  autoClose={1000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick={true}
-  rtl={false}
-  pauseOnFocusLoss={true}
-  draggable={true}
-  pauseOnHover={true}
-  theme="colored"
-/>;
-
 function App() {
   const [selected, setSelected] = useState([]);
 
@@ -44,7 +31,19 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss={true}
+        draggable={true}
+        pauseOnHover={true}
+        theme="colored"
+      />
+
       <Router
         selected={selected}
         onAdd={onAddHandler}

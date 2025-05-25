@@ -9,18 +9,46 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 40px;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    gap: 32px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    gap: 24px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 20px;
+  }
 `;
 
 const Button = styled.button`
   padding: 20px;
-  font-size: 1.2rem;
+  font-size: 19px;
   background-color: #ffcb05;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
+
   &:hover {
     background-color: rgb(255, 240, 126);
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    padding: 18px;
+    font-size: 17px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px;
+    font-size: 15px;
   }
 `;
 
@@ -30,11 +58,41 @@ const MainTitle = styled.h1`
   width: 100%;
   padding: 10px;
   border-radius: 8px;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    font-size: 26px;
+    padding: 9px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    font-size: 22px;
+    padding: 8px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    padding: 6px;
+  }
 `;
 
 const LogoImage = styled.img`
   width: 800px;
   margin-bottom: 70px;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 600px;
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    width: 400px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 480px) {
+    width: 300px;
+    margin-bottom: 30px;
+  }
 `;
 
 function Home() {

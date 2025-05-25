@@ -12,6 +12,24 @@ const Container = styled.div`
   align-items: center;
   gap: 4px;
   padding: 2px;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    max-width: 900px;
+    padding: 16px;
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    max-width: 600px;
+    padding: 12px;
+    gap: 6px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    padding: 8px;
+    gap: 4px;
+  }
 `;
 
 function Dex({ selected, onAdd, onRemove }) {
