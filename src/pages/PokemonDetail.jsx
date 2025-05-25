@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const PokemonName = styled.h2`
   font-size: 30px;
-  font-weight: 20px;
+  font-weight: bold;
   margin-bottom: 15px;
 `;
 
