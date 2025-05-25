@@ -6,8 +6,6 @@ const Grid = styled.div`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  align-items: center;
-  justify-content: center;
   gap: 20px;
   padding: 22px;
   margin-top: 10px;

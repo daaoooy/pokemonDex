@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const PokemonName = styled.h2`
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 20px;
   margin-bottom: 15px;
 `;
 
@@ -21,9 +21,7 @@ const PokemonImage = styled.img`
   width: 220px;
   height: 200px;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: rgb(205, 205, 205);
-  margin-bottom: 1.8rem;
+  margin-bottom: 20px;
 `;
 
 const TypesWrapper = styled.div`
@@ -36,10 +34,13 @@ const TypesWrapper = styled.div`
 const TypeTag = styled.span`
   padding: 6px 16px;
   border-radius: 20px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.95rem;
+  box-shadow: 0 2px 5px rgb(218, 218, 218);
+
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 18px;
   text-transform: capitalize;
+
   background-color: ${({ type }) => {
     switch (type) {
       case "불꽃":
@@ -56,29 +57,28 @@ const TypeTag = styled.span`
         return "rgb(177, 177, 177)";
     }
   }};
-  box-shadow: 0 2px 5px rgb(218, 218, 218);
 `;
 
 const PokemonDescription = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #333;
-  font-weight: 500;
-  padding: 0 0.8rem;
-  margin-bottom: 2.5rem;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+
+  padding: 2px 8px;
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
   background-color: rgb(255, 211, 136);
-  color: white;
+  box-shadow: 0 6px 12px rgb(225, 225, 225);
   border: none;
+  border-radius: 30px;
   margin: 20px;
   padding: 10px 20px;
-  border-radius: 30px;
+
+  color: rgb(255, 255, 255);
   font-size: 20px;
   font-weight: bold;
-  box-shadow: 0 6px 12px rgb(225, 225, 225);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     background-color: rgb(255, 218, 96);
@@ -90,8 +90,6 @@ function PokemonDetail({ selected, onAdd, onRemove }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const pokemon = MOCK_DATA.find((p) => p.id === Number(id));
-
-  if (!pokemon) return <p>존재하지 않는 포켓몬입니다.</p>;
 
   const isSelected = selected.some((p) => p.id === pokemon.id);
 
@@ -115,7 +113,6 @@ function PokemonDetail({ selected, onAdd, onRemove }) {
         ))}
       </TypesWrapper>
       <PokemonDescription>{pokemon.description}</PokemonDescription>
-
       <Button onClick={handleClick}>{isSelected ? "삭제" : "추가"}</Button>
       <Button onClick={() => navigate(-1)}>뒤로가기</Button>
     </Wrapper>

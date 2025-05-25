@@ -2,28 +2,32 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
-  border: 1px solid #ddd;
-  padding: 12px;
+  border: 1px solid rgb(229, 229, 229);
   border-radius: 8px;
+
+  padding: 12px;
+
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   text-align: center;
+
   background-color: ${({ $selected }) =>
     $selected ? "rgb(255, 249, 228)" : "rgb(255, 255, 255)"};
+
   &:hover {
     transform: translateY(-4px) scale(1.02);
     box-shadow: 4px 4px 12px rgb(217, 217, 217);
   }
 `;
 
-const Button = styled.button`
+const AddButton = styled.button`
   margin-top: 8px;
   padding: 6px 12px;
   background-color: rgb(250, 93, 93);
   color: white;
+
   border: none;
   border-radius: 4px;
-  cursor: pointer;
+
   &:hover {
     background-color: rgb(252, 74, 74);
   }
@@ -45,7 +49,7 @@ const PokemonNumberWrapper = styled.div`
 const PokemonNumber = styled.p`
   font-weight: bold;
   font-size: 14px;
-  color: #555;
+  color: rgb(0, 0, 0);
 `;
 
 const PokemonName = styled.h3``;
@@ -62,14 +66,14 @@ function PokemonCard({ pokemon, onAdd, isSelected }) {
           No. {pokemon.id.toString().padStart(3, "0")}
         </PokemonNumber>
       </PokemonNumberWrapper>
-      <Button
+      <AddButton
         onClick={(e) => {
           e.stopPropagation();
           onAdd(pokemon);
         }}
       >
         추가
-      </Button>
+      </AddButton>
     </Card>
   );
 }
